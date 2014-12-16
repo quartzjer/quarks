@@ -1,4 +1,4 @@
-# Quarks - Interoperable Device Identifiers
+# Quarks - Interoperable Hardware Identifiers
 
 A `quark` is a unique identifier to a single input and/or output on a hardware device, designed to be easy to manage for debugging/development and also wire/memory efficient.
 
@@ -33,7 +33,7 @@ The `m` type should be used to return different types for different use cases, s
 
 ## Network Selector
 
-The last two characters (10 bits) are for identifying a quark in a local network, so that a single quark id can be used to address different devices on the network.  It requires the devices to use a network coordinator or be managed such that they have a unique local id and mappings for how to send requests to other devices when processing quarks with a network selector.
+The last two characters (10 bits) are for identifying a quark in a local network or bus, so that a single quark id can be used to address different hardware devices in one management namespace (up to 1,023).  It requires the devices to have a coordinator or be managed such that they are assigned unique local ids and mappings for how to send requests to other devices when processing quarks.
 
 Device `0` would be `aa`, device `1` would be `ab`, etc. The special value `77` (ten high/1 bits) is reserved to always mean "localhost" or the current device whenever it is used.
 
@@ -41,6 +41,6 @@ Device `0` would be `aa`, device `1` would be `ab`, etc. The special value `77` 
 
 * `porfab` - power status read-only flag on device 1
 * `idrs77` - local device id string
-* `tcxnaa` current temperature value in celsius of device 0
+* `tcxnaa` - current temperature value in celsius of device 0
 * `dawf77` - true/false of local digital pin `D0`
 * `acxmac` - full support for anything to analog pin `A3` on device 2
