@@ -19,6 +19,18 @@ The `quark` is composed of a minimum 20 bit _local selector_ and a 10 bit _netwo
   * `b` - raw bytes (array of [0,1,0,0,...])
   * `m` - supports multiple types
 
+### `capabilities`
+
+The capabilities field is only used to identify what the hardware is able to do, not serve as a method for limiting access, it is an identifier not an ACL/mask.  A quark with `r` identical to one with `w` or `x` should never exist, each capability is a superset of the previous.
+
+The `x` eventing capability is a signal to the application that it is able to generate events containing the identical `r` data, but how the events are delivered depends on the network technology available and in use, as well as how the subscriptions are managed.
+
+### `data type`
+
+Each quark may support just one data type or the `m` if it handles any multiple of them, `m` is a superset and like capabilities there should never be an identical quark with only differing data types.
+
+The `m` type should be used to return different types for different use cases, such as a hardware fault should return the flag if there is one, the number is a code, the string is an error message, and the bytes may be extra detail.  They must always be derived from the same data but should take advantage of the actual data type to provide a richer result.
+
 ## Network Selector
 
 The last two characters (10 bits) are for identifying a quark in a local network, so that a single quark id can be used to address different devices on the network.  It requires the devices to use a network coordinator or be managed such that they have a unique local id and mappings for how to send requests to other devices when processing quarks with a network selector.
