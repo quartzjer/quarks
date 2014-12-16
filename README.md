@@ -18,6 +18,10 @@ The `quark` is composed of a minimum 20 bit _local selector_ and a 10 bit _netwo
   * `s` - string (UTF8)
   * `b` - raw bytes (array of [0,1,0,0,...])
   * `m` - supports multiple types
+  
+### `id`
+
+To promote interoperability there is a standard [mapping table](map.md) of common inputs and outputs with ranges set aside for custom usage.  This table is expected to grow over time and details be added for the data types handled by each individual id.
 
 ### `capabilities`
 
