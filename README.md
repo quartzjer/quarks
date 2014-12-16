@@ -6,19 +6,19 @@ The `quark` is composed of a minimum 20 bit _local selector_ and a 10 bit _netwo
 
 ## Local Selector
 
-* 5 - `type`, 5 - `capabilities`, 10 - `id`
-* `type` - the type of data, a subset of JSON
-  * `f`lag (true/false)
-  * `n`umber (JSON)
-  * `s`tring (UTF8)
-  * `b`ytes (array of 0, 1, 0, 0, etc)
-  * `a`ny (all types supported)
-* `capabilities` - what is possible when interacting with this quark
-  * `r`eadable - can only return data
-  * `w`riteable - can only be sent data
-  * `b`idirectional - read or write
-  * `e`venting - generates events as it changes
+* 10 - `id`, 5 - `type`, 5 - `capabilities`
 * `id` - unique 2-character id that maps to a local pin, port, or software value, see the [map](map.md)
+* `type` - the only type(s) of data supported by the quark, a subset of JSON
+  * `f` - flag (true/false)
+  * `n` - number (JSON)
+  * `s` - string (UTF8)
+  * `b` - raw bytes (array of [0,1,0,0,...])
+  * `m` - supports multiple types
+* `capabilities` - what are the limitations when interacting with this quark
+  * `r` - readable, can only return data (no write support)
+  * `w` - writeable, can only be sent data (no read support)
+  * `x` - may support either read and/or write (doesn't guarantee either)
+  * `d` - dynamic, can generate a stream of events as it changes
 
 ## Network Selector
 
@@ -28,8 +28,8 @@ The special value `77` (ten high/1 bits) is reserved to always mean "localhost" 
 
 ## Examples
 
-* `frpoab` - power status read-only flag on device 1
-* `srid77` - local device id string
-* `netcaa` current temperature value in celsius of device 0
-* `fbda77` - local digital pin `D0`
-* `aeacac` - analog pin `A4` on device 2
+* `pofrab` - power status read-only flag on device 1
+* `idsr77` - local device id string
+* `tcndaa` current temperature value in celsius of device 0
+* `dafx77` - true/false of local digital pin `D0`
+* `acmdac` - number or string of analog pin `A4` on device 2
