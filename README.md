@@ -1,6 +1,6 @@
-# Quarks - Interoperable Hardware Identifiers
+# Quarks - Easy Hardware Identifiers
 
-A `quark` is a unique identifier to a single input and/or output on a hardware device, designed to be easy to manage for debugging/development and also wire/memory efficient.
+A `quark` is a unique identifier to a single input and/or output on a hardware device, designed to be easy to manage for debugging/development, wire/memory efficient, and promote interoperability.
 
 The `quark` is composed of a minimum 20 bit _local selector_ and a 10 bit _network selector_. The maximum size fits safely within a `uint32_t` leaving 2 additional bits for custom app-specific flags (such as enabled/disabled).  A `quark` is always displayed as [base32 encoded](http://tools.ietf.org/html/rfc3548) string of 6 characters (5 bits per character, lower case, no padding), using the alphabet `abcdefghijklmnopqrstuvwxyz234567`.
 
