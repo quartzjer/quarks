@@ -1,4 +1,4 @@
-# Quarks - Interoperable Sensor Identifiers
+# Quarks - Interoperable Device Identifiers
 
 A `quark` is a unique identifier to a single input and/or output on a hardware device, designed to be easy to manage for debugging/development and also wire/memory efficient.
 
